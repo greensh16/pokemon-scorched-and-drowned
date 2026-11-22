@@ -1032,3 +1032,47 @@ LittlerootTown_EventScript_RustTest::
 LittlerootTown_Text_RustTest:
 	.string "The Rust climate library says…\n"
 	.string "{STR_VAR_1}!$"
+
+@ Scorched and Drowned dev tool: shows and changes the climate state. Remove before release.
+LittlerootTown_EventScript_ClimateScientist::
+	lock
+	faceplayer
+	call LittlerootTown_EventScript_ClimateStatus
+	msgbox LittlerootTown_Text_ClimateAdvanceAct, MSGBOX_YESNO
+	call_if_eq VAR_RESULT, YES, LittlerootTown_EventScript_ClimateAdvanceAct
+	msgbox LittlerootTown_Text_ClimateToggleFlood, MSGBOX_YESNO
+	call_if_eq VAR_RESULT, YES, LittlerootTown_EventScript_ClimateToggleFlood
+	call LittlerootTown_EventScript_ClimateStatus
+	release
+	end
+
+LittlerootTown_EventScript_ClimateStatus::
+	buffernumberstring STR_VAR_1, VAR_CLIMATE_ACT
+	buffernumberstring STR_VAR_2, VAR_CLIMATE_WARMING
+	msgbox LittlerootTown_Text_ClimateStatus, MSGBOX_DEFAULT
+	return
+
+LittlerootTown_EventScript_ClimateAdvanceAct::
+	special Climate_AdvanceAct
+	return
+
+LittlerootTown_EventScript_ClimateToggleFlood::
+	goto_if_ge VAR_CLIMATE_WARMING, 3, LittlerootTown_EventScript_ClimateUnflood
+	setvar VAR_CLIMATE_WARMING, 3
+	return
+
+LittlerootTown_EventScript_ClimateUnflood::
+	setvar VAR_CLIMATE_WARMING, 0
+	return
+
+LittlerootTown_Text_ClimateStatus:
+	.string "Climate monitor: ACT {STR_VAR_1},\n"
+	.string "warming level {STR_VAR_2} of 5.$"
+
+LittlerootTown_Text_ClimateAdvanceAct:
+	.string "Advance to the next act and\n"
+	.string "recompute warming?$"
+
+LittlerootTown_Text_ClimateToggleFlood:
+	.string "Toggle sea-level rise?\n"
+	.string "(warming 3 floods ROUTE 104)$"

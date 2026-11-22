@@ -639,3 +639,7 @@ gSpecials::
 	def_special StickerManGetBragFlags
 	def_special CheckAddCoins
 	def_special Climate_Phase0Special
+	def_special Climate_GetMapVariant
+	def_special Climate_UpdateWarming
+	def_special Climate_AdvanceAct
+	def_special Climate_GetEnding

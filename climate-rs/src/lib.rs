@@ -12,6 +12,8 @@
 
 pub mod ffi;
 pub mod logic;
+pub mod variants;
+pub mod warming;
 
 /// On the GBA a panic hangs in place, so mGBA's debugger shows where it stopped.
 /// Release builds use panic = "abort", so there is no unwinding.

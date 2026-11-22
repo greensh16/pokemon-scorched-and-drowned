@@ -13,6 +13,7 @@ Route104_EventScript_StartSailToDewford::
 	end
 
 Route104_OnTransition:
+	call Route104_EventScript_ClimateVariant
 	call Common_EventScript_SetupRivalGfxId
 	call Route104_EventScript_TrySetRivalPos
 	call Route104_EventScript_ShowOrHideWhiteHerbFlorist
@@ -1166,3 +1167,16 @@ Route104_Text_BrendanPostBattle:
 	.string "making POKéMON battle.\p"
 	.string "Like MR. BRINEY, it's important to\n"
 	.string "become friends with your POKéMON.$"
+
+@ Scorched and Drowned: sea-level rise floods the southern beach from warming 3.
+@ The three beach NPCs move 4 tiles east, onto what's left of the sand.
+Route104_EventScript_ClimateVariant::
+	special Climate_GetMapVariant
+	goto_if_eq VAR_RESULT, 0, Route104_EventScript_ClimateVariantDone
+	setmaplayoutindex LAYOUT_ROUTE104_FLOODED
+	setobjectxyperm 1, 19, 60    @ Bug Catcher
+	setobjectxyperm 33, 19, 59   @ Fisherman Darian
+	setobjectxyperm 28, 22, 67   @ Youngster Billy
+	setobjectmovementtype 28, MOVEMENT_TYPE_FACE_DOWN   @ his walking loop would hit the cliff
+Route104_EventScript_ClimateVariantDone:
+	return

@@ -266,10 +266,10 @@
 #define VAR_ROXANNE_CALL_STEP_COUNTER                    0x40F4
 #define VAR_SCOTT_BF_CALL_STEP_COUNTER                   0x40F5
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
-#define VAR_UNUSED_0x40F7                                0x40F7 // Unused Var
-#define VAR_UNUSED_0x40F8                                0x40F8 // Unused Var
-#define VAR_UNUSED_0x40F9                                0x40F9 // Unused Var
-#define VAR_UNUSED_0x40FA                                0x40FA // Unused Var
+#define VAR_CLIMATE_WARMING                              0x40F7 // Scorched and Drowned: warming level 0-5
+#define VAR_CLIMATE_PRESSURE                             0x40F8 // Scorched and Drowned: story pressure points
+#define VAR_CLIMATE_MITIGATION                           0x40F9 // Scorched and Drowned: mitigation quest points
+#define VAR_CLIMATE_ACT                                  0x40FA // Scorched and Drowned: current act 0-5
 #define VAR_UNUSED_0x40FB                                0x40FB // Unused Var
 #define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
 #define VAR_UNUSED_0x40FD                                0x40FD // Unused Var

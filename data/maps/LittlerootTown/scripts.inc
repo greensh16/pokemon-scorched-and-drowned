@@ -1014,3 +1014,21 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "I have something to show you.\n"
 	.string "Let's go to my LAB.$"
 
+@ Phase 0 test NPC. Append this to data/maps/LittlerootTown/scripts.inc
+@ (or keep it as a separate file and .include it from there).
+@ In Porymap, add an object event in Littleroot Town and set its script
+@ to LittlerootTown_EventScript_RustTest.
+
+LittlerootTown_EventScript_RustTest::
+	lock
+	faceplayer
+	setvar VAR_TEMP_1, 41
+	special Climate_Phase0Special
+	buffernumberstring STR_VAR_1, VAR_RESULT
+	msgbox LittlerootTown_Text_RustTest, MSGBOX_DEFAULT
+	release
+	end
+
+LittlerootTown_Text_RustTest:
+	.string "The Rust climate library says…\n"
+	.string "{STR_VAR_1}!$"

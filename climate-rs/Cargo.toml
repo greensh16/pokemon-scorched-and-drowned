@@ -1,0 +1,25 @@
+[package]
+name = "climate"
+version = "0.1.0"
+edition = "2021"
+description = "Climate systems for Pokémon: Scorched and Drowned (linked into pokeemerald-expansion)"
+publish = false
+
+[lib]
+# staticlib: libclimate.a, linked into the ROM by the C Makefile.
+# rlib: lets `cargo test` build a normal host test binary.
+crate-type = ["staticlib", "rlib"]
+path = "src/lib.rs"
+
+[dependencies]
+# None in Phase 0. Later: `heapless` for fixed-size collections.
+
+[profile.release]
+opt-level = "s"        # GBA ROM space and a 16-bit bus: favour small code
+lto = true
+codegen-units = 1
+panic = "abort"
+debug = true           # keep symbols in the .a for mGBA/GDB; they don't end up in the .gba
+
+[profile.dev]
+panic = "abort"

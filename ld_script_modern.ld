@@ -61,6 +61,7 @@ SECTIONS {
         *libgcc.a:*.o(.text*);
         *libc.a:*.o(.text*);
         *libnosys.a:*.o(.text*);
+        *libclimate.a:*(.text*);
         asm/*.o(.text*);
         KEEP(*.o(.text.consts));
         *.o(.text*);
@@ -85,6 +86,7 @@ SECTIONS {
         *.o(.rodata*);
         *libgcc.a:*.o(.rodata*);
         *libc.a:*.o(.rodata*);
+        *libclimate.a:*(.rodata*);
         *libc.a:*.o(.data*);
         sound/songs/*.o(.rodata);
     } > ROM =0

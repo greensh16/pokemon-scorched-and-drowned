@@ -1,0 +1,12 @@
+// Poryscript version of the Phase 0 test NPC, for when Poryscript is set up.
+// Use either this or rust_test.inc, not both.
+
+script LittlerootTown_EventScript_RustTest {
+    lock
+    faceplayer
+    setvar(VAR_TEMP_1, 41)
+    special(Climate_Phase0Special)
+    buffernumberstring(STR_VAR_1, VAR_RESULT)
+    msgbox("The Rust climate library says…\n{STR_VAR_1}!")
+    release
+}

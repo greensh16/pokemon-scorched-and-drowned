@@ -1,0 +1,6 @@
+# thumbv4t-none-eabi is a tier-3 target: it needs nightly and rust-src (for -Zbuild-std).
+# Pin a specific nightly once the build works, e.g. channel = "nightly-2026-11-15",
+# and only bump it on purpose.
+[toolchain]
+channel = "nightly"
+components = ["rust-src", "rustfmt", "clippy"]

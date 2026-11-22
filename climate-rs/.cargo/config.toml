@@ -1,0 +1,8 @@
+# Flags for the GBA build only. Host builds (`cargo test`) are unaffected.
+# build-std is passed on the command line by climate.mk rather than set here,
+# so that `cargo test` on the host still uses the normal prebuilt std.
+[target.thumbv4t-none-eabi]
+rustflags = [
+    "-C", "target-cpu=arm7tdmi",
+    "-C", "relocation-model=static",
+]

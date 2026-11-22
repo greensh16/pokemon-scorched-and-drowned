@@ -332,8 +332,8 @@ RivalsHouse_1F_Text_LikeChildLikeFather:
 	.string "Like child, like father.\p"
 	.string "My husband is as wild about POKéMON\n"
 	.string "as our child.\p"
-	.string "If he's not at his LAB, he's likely\n"
-	.string "scrabbling about in grassy places.$"
+	.string "If he's not at his LAB, he's out in\n"
+	.string "the heat measuring something.$"
 
 RivalsHouse_1F_Text_TooBusyToNoticeVisit:
 	.string "That {RIVAL}!\p"

@@ -7,6 +7,8 @@
 #include "constants/maps.h"
 #include "constants/vars.h"
 #include "climate.h"
+#include "climate_glue.h"
+#include "random.h"
 
 // Phase 0 round trip, called from a map script with `special Climate_Phase0Special`.
 //   1. C -> Rust: Climate_Ping() must return 42.
@@ -69,4 +71,36 @@ void Climate_AdvanceAct(void)
 void Climate_GetEnding(void)
 {
     gSpecialVar_Result = Climate_Ending(VarGet(VAR_CLIMATE_WARMING));
+}
+
+// ---------------------------------------------------------------------------
+// Phase 1: encounter range shifts
+// ---------------------------------------------------------------------------
+
+// Climate zone for a pokeemerald map. Maps not listed here never change encounters.
+static u8 GetClimateZone(u8 mapGroup, u8 mapNum)
+{
+    u16 map = (mapGroup << 8) | mapNum;
+
+    switch (map)
+    {
+    case MAP_ROUTE101:
+    case MAP_ROUTE102:
+        return CLIMATE_ZONE_GRASSLAND;
+    case MAP_ROUTE103:
+    case MAP_ROUTE104:
+        return CLIMATE_ZONE_COAST;
+    default:
+        return CLIMATE_ZONE_NONE;
+    }
+}
+
+// Called from wild_encounter.c just before a wild Pokémon is created.
+u16 Climate_ShiftWildSpecies(u16 species)
+{
+    u8 zone = GetClimateZone(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum);
+
+    if (zone == CLIMATE_ZONE_NONE)
+        return species;
+    return Climate_ShiftEncounter(species, zone, VarGet(VAR_CLIMATE_WARMING), Random());
 }

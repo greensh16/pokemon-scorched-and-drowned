@@ -10,8 +10,10 @@
 // no_std on the GBA (target_os = "none"); normal std on the host for `cargo test`.
 #![cfg_attr(target_os = "none", no_std)]
 
+pub mod encounters;
 pub mod ffi;
 pub mod logic;
+pub mod species;
 pub mod variants;
 pub mod warming;
 

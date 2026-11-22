@@ -288,9 +288,9 @@ PlayersHouse_1F_Text_IsntItNiceInHere:
 	.string "Isn't it nice in here, too?$"
 
 PlayersHouse_1F_Text_MoversPokemonGoSetClock:
-	.string "The mover's POKéMON do all the work\n"
-	.string "of moving us in and cleaning up after.\l"
-	.string "This is so convenient!\p"
+	.string "The mover's POKéMON did all the work.\n"
+	.string "Poor things, in this heat!\l"
+	.string "I gave them all some cold water.\p"
 	.string "{PLAYER}, your room is upstairs.\n"
 	.string "Go check it out, dear!\p"
 	.string "DAD bought you a new clock to mark\n"
@@ -322,7 +322,9 @@ PlayersHouse_1F_Text_ItsOverWeMissedHim:
 PlayersHouse_1F_Text_GoIntroduceYourselfNextDoor:
 	.string "Oh, yes.\n"
 	.string "One of DAD's friends lives in town.\p"
-	.string "PROF. BIRCH is his name.\p"
+	.string "PROF. BIRCH is his name.\n"
+	.string "He studies how the climate is\l"
+	.string "changing life for POKéMON.\p"
 	.string "He lives right next door, so you should\n"
 	.string "go over and introduce yourself.$"
 
@@ -335,8 +337,9 @@ PlayersHouse_1F_Text_DidYouMeetProfBirch:
 
 PlayersHouse_1F_Text_YouShouldRestABit:
 	.string "MOM: How are you doing, {PLAYER}?\n"
-	.string "You look a little tired.\p"
-	.string "I think you should rest a bit.$"
+	.string "You look a little worn out.\p"
+	.string "It's far too hot to push yourself.\n"
+	.string "Rest a bit and drink some water.$"
 
 PlayersHouse_1F_Text_TakeCareHoney:
 	.string "MOM: Take care, honey!$"
@@ -372,9 +375,9 @@ PlayersHouse_1F_Text_ReportFromPetalburgGym:
 	.string "report from in front of PETALBURG GYM.$"
 
 PlayersHouse_1F_Text_TheresAMovieOnTV:
-	.string "There is a movie on TV.\p"
-	.string "Two men are dancing on a big piano\n"
-	.string "keyboard.\p"
+	.string "It's the news.\p"
+	.string "Another heat record was broken\n"
+	.string "today in SLATEPORT.\p"
 	.string "Better get going!$"
 
 PlayersHouse_1F_Text_RunningShoesManual:

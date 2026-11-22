@@ -906,15 +906,15 @@ LittlerootTown_EventScript_GiveRunningShoes::
 
 LittlerootTown_Text_OurNewHomeLetsGoInside:
 	.string "MOM: {PLAYER}, we're here, honey!\p"
-	.string "It must be tiring riding with our things\n"
-	.string "in the moving truck.\p"
+	.string "That truck was like an oven.\n"
+	.string "Are you all right?\p"
 	.string "Well, this is LITTLEROOT TOWN.\p"
 	.string "How do you like it?\n"
 	.string "This is our new home!\p"
-	.string "It has a quaint feel, but it seems to be\n"
-	.string "an easy place to live, don't you think?\p"
-	.string "And, you get your own room, {PLAYER}!\n"
-	.string "Let's go inside.$"
+	.string "They say the summers here used to be\n"
+	.string "mild. Not this year, I'm afraid.\p"
+	.string "But you get your own room, {PLAYER}!\n"
+	.string "Let's go inside, out of the sun.$"
 
 LittlerootTown_Text_WaitPlayer:
 	.string "MOM: Wait, {PLAYER}!$"
@@ -948,26 +948,31 @@ LittlerootTown_Text_ComeHomeIfAnythingHappens:
 	.string "To think that you have your very own\n"
 	.string "POKéMON now…\l"
 	.string "Your father will be overjoyed.\p"
-	.string "…But please be careful.\n"
-	.string "If anything happens, you can come home.\p"
+	.string "…But please be careful out there.\n"
+	.string "Rest in the shade, and keep water\l"
+	.string "with you and your POKéMON.\p"
+	.string "If anything happens, come home.\n"
 	.string "Go on, go get them, honey!$"
 
 LittlerootTown_Text_CanUsePCToStoreItems:
-	.string "If you use a PC, you can store items\n"
-	.string "and POKéMON.\p"
-	.string "The power of science is staggering!$"
+	.string "The creek behind town has never\n"
+	.string "run this low.\p"
+	.string "My grandpa says he used to catch\n"
+	.string "LOTAD there every summer.$"
 
 LittlerootTown_Text_BirchSpendsDaysInLab:
 	.string "PROF. BIRCH spends days in his LAB\n"
-	.string "studying, then he'll suddenly go out in\l"
-	.string "the wild to do more research…\p"
-	.string "When does PROF. BIRCH spend time\n"
-	.string "at home?$"
+	.string "with his charts, then he'll suddenly\l"
+	.string "rush out to measure something…\p"
+	.string "He says the numbers keep surprising\n"
+	.string "him, and not in a good way.$"
 
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
 	.string "Um, um, um!\p"
-	.string "If you go outside and go in the grass,\n"
-	.string "wild POKéMON will jump out!$"
+	.string "The wild POKéMON are all jumpy\n"
+	.string "and cranky in this heat!\p"
+	.string "If you go in the grass, they'll\n"
+	.string "jump right out at you!$"
 
 LittlerootTown_Text_DangerousIfYouDontHavePokemon:
 	.string "It's dangerous if you don't have\n"
@@ -977,8 +982,8 @@ LittlerootTown_Text_CanYouGoSeeWhatsHappening:
 	.string "Um, hi!\p"
 	.string "There are scary POKéMON outside!\n"
 	.string "I can hear their cries!\p"
-	.string "I want to go see what's going on,\n"
-	.string "but I don't have any POKéMON…\p"
+	.string "The heat makes them really angry.\n"
+	.string "But I don't have any POKéMON…\p"
 	.string "Can you go see what's happening\n"
 	.string "for me?$"
 

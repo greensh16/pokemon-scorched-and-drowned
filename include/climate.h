@@ -11,6 +11,11 @@
 #define CLIMATE_MAP_NONE 0
 #define CLIMATE_MAP_ROUTE104_BEACH 1
 
+// Climate zones for encounter range shifts, shared with Rust (encounters::ClimateZone). Append only.
+#define CLIMATE_ZONE_NONE 0
+#define CLIMATE_ZONE_GRASSLAND 1
+#define CLIMATE_ZONE_COAST 2
+
 // Returns 42. Phase 0 check that C can call Rust.
 uint16_t Climate_Ping(void);
 
@@ -26,5 +31,9 @@ uint8_t Climate_MapVariant(uint8_t climate_map, uint16_t warming);
 
 // Ending for a final warming level: 0 Adaptation, 1 Collapse, 2 Overshoot.
 uint8_t Climate_Ending(uint16_t warming);
+
+// Species to create for a wild encounter: `species` itself, or its climate-shifted
+// replacement in `zone` at `warming`. `roll` is a random number from C's `Random()`.
+uint16_t Climate_ShiftEncounter(uint16_t species, uint8_t zone, uint16_t warming, uint16_t roll);
 
 #endif  /* GUARD_CLIMATE_H */

@@ -271,8 +271,10 @@ Route101_Text_DontLeaveMe:
 
 Route101_Text_YouSavedMe:
 	.string "PROF. BIRCH: Whew…\p"
-	.string "I was in the tall grass studying wild\n"
-	.string "POKéMON when I was jumped.\p"
+	.string "I was checking soil moisture in the\n"
+	.string "grass when those POKéMON jumped me.\p"
+	.string "They're desperate. There's barely\n"
+	.string "any water left out here.\p"
 	.string "You saved me.\n"
 	.string "Thanks a lot!\p"
 	.string "Oh?\p"
@@ -289,8 +291,8 @@ Route101_Text_TakeTiredPokemonToPokeCenter:
 Route101_Text_WildPokemonInTallGrass:
 	.string "Wild POKéMON will jump out at you in\n"
 	.string "tall grass.\p"
-	.string "If you want to catch POKéMON, you have\n"
-	.string "to go into the tall grass and search.$"
+	.string "This grass used to be green by now.\n"
+	.string "This summer it's all dry and brown.$"
 
 Route101_Text_RouteSign:
 	.string "ROUTE 101\n"

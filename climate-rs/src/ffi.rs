@@ -1,6 +1,7 @@
 //! The C ABI. Every function the C game calls is declared here and nowhere else.
 //! Keep these thin: read inputs, call `logic`, return a primitive.
 
+use crate::encounters::{self, ClimateZone};
 use crate::logic;
 use crate::variants::{self, ClimateMap};
 use crate::warming;
@@ -8,6 +9,11 @@ use crate::warming;
 /// Climate map ids, shared with C (`include/climate.h`). Must match `variants::ClimateMap`.
 pub const CLIMATE_MAP_NONE: u8 = ClimateMap::None as u8;
 pub const CLIMATE_MAP_ROUTE104_BEACH: u8 = ClimateMap::Route104Beach as u8;
+
+/// Climate zones for encounter range shifts, shared with C. Must match `encounters::ClimateZone`.
+pub const CLIMATE_ZONE_NONE: u8 = ClimateZone::None as u8;
+pub const CLIMATE_ZONE_GRASSLAND: u8 = ClimateZone::Grassland as u8;
+pub const CLIMATE_ZONE_COAST: u8 = ClimateZone::Coast as u8;
 
 // Functions provided by the C side (pokeemerald-expansion, src/event_data.c).
 extern "C" {
@@ -47,6 +53,13 @@ pub extern "C" fn Climate_MapVariant(climate_map: u8, warming: u16) -> u8 {
 #[no_mangle]
 pub extern "C" fn Climate_Ending(warming: u16) -> u8 {
     warming::ending(warming) as u8
+}
+
+/// Species to create for a wild encounter: `species` itself, or its climate-shifted
+/// replacement in `zone` at `warming`. `roll` is a random number from C's `Random()`.
+#[no_mangle]
+pub extern "C" fn Climate_ShiftEncounter(species: u16, zone: u8, warming: u16, roll: u16) -> u16 {
+    encounters::shift_encounter(species, ClimateZone::from_id(zone), warming, roll)
 }
 
 /// Host-side stand-in for the C game, so the FFI layer can be tested with `cargo test`.
@@ -100,5 +113,18 @@ mod tests {
         // C hard-codes these in include/climate.h. Renumbering breaks the ROM.
         assert_eq!(CLIMATE_MAP_NONE, 0);
         assert_eq!(CLIMATE_MAP_ROUTE104_BEACH, 1);
+        assert_eq!(CLIMATE_ZONE_NONE, 0);
+        assert_eq!(CLIMATE_ZONE_GRASSLAND, 1);
+        assert_eq!(CLIMATE_ZONE_COAST, 2);
+    }
+
+    #[test]
+    fn shift_encounter_via_ffi() {
+        use crate::species::{LOTAD, SEEDOT, TRAPINCH};
+        assert_eq!(Climate_ShiftEncounter(LOTAD, CLIMATE_ZONE_GRASSLAND, 3, 0), TRAPINCH);
+        assert_eq!(Climate_ShiftEncounter(LOTAD, CLIMATE_ZONE_GRASSLAND, 0, 0), LOTAD);
+        assert_eq!(Climate_ShiftEncounter(LOTAD, CLIMATE_ZONE_NONE, 5, 0), LOTAD);
+        assert_eq!(Climate_ShiftEncounter(SEEDOT, CLIMATE_ZONE_GRASSLAND, 5, 0), SEEDOT);
+        assert_eq!(Climate_ShiftEncounter(LOTAD, 99, 5, 0), LOTAD);
     }
 }

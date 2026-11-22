@@ -22,6 +22,7 @@
 #include "script.h"
 #include "tv.h"
 #include "wild_encounter.h"
+#include "climate_glue.h"
 #include "battle_debug.h"
 #include "battle_pike.h"
 #include "battle_pyramid.h"
@@ -578,14 +579,16 @@ bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum WildPok
     if (gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS && flags & WILD_CHECK_KEEN_EYE && !IsAbilityAllowingEncounter(level))
         return FALSE;
 
-    CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
+    // Scorched and Drowned: wild Pokémon shift range as Hoenn warms.
+    CreateWildMon(Climate_ShiftWildSpecies(wildMonInfo->wildPokemon[wildMonIndex].species), level);
     return TRUE;
 }
 
 static u16 GenerateFishingWildMon(const struct WildPokemonInfo *wildMonInfo, u8 rod)
 {
     u8 wildMonIndex = ChooseWildMonIndex_Fishing(rod);
-    enum Species wildMonSpecies = wildMonInfo->wildPokemon[wildMonIndex].species;
+    // Scorched and Drowned: wild Pokémon shift range as Hoenn warms.
+    enum Species wildMonSpecies = Climate_ShiftWildSpecies(wildMonInfo->wildPokemon[wildMonIndex].species);
     u8 level = ChooseWildMonLevel(wildMonInfo->wildPokemon, wildMonIndex, WILD_AREA_FISHING);
 
     UpdateChainFishingStreak();

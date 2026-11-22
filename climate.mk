@@ -7,7 +7,9 @@ CLIMATE_LIB    := $(CLIMATE_DIR)/target/$(CLIMATE_TARGET)/release/libclimate.a
 CLIMATE_SRCS   := $(shell find $(CLIMATE_DIR)/src -name '*.rs') \
                   $(CLIMATE_DIR)/Cargo.toml \
                   $(CLIMATE_DIR)/.cargo/config.toml \
-                  $(CLIMATE_DIR)/rust-toolchain.toml
+                  $(CLIMATE_DIR)/rust-toolchain.toml \
+                  $(CLIMATE_DIR)/build.rs \
+                  include/constants/species.h
 
 # Cargo does its own incremental tracking; Make just re-runs it when a source changes.
 $(CLIMATE_LIB): $(CLIMATE_SRCS)
